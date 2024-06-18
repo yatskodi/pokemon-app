@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { PokemonGrid } from '../components/PokemonGrid';
+import { MainContaner } from '../components';
 import { usePokemon, store } from '../store';
 import { pokemonUpdated } from '../store/reducers';
 import { getPokemons } from '../api';
@@ -7,6 +7,7 @@ import { getPokemons } from '../api';
 export const Route = createFileRoute('/')({
   component: Index,
   beforeLoad: async () => {
+    // using store directly may be an anti-pattert
     store.dispatch(pokemonUpdated(await getPokemons()));
   },
 });
@@ -14,5 +15,5 @@ export const Route = createFileRoute('/')({
 export default function Index() {
   const pokemons = usePokemon();
 
-  return <PokemonGrid pokemons={pokemons || []} />;
+  return <MainContaner pokemons={pokemons || []} />;
 }

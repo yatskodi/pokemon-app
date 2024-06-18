@@ -2,9 +2,9 @@ import { Pokemon } from '../../types';
 import styled from 'styled-components';
 import { getImageSrc } from '../../utility';
 
-type PokemonDetailProps = { pokemon: Pokemon };
+type Props = { pokemon: Pokemon };
 
-export const PokemonDetail = ({ pokemon }: PokemonDetailProps) => {
+export const PokemonDetail = ({ pokemon }: Props) => {
   const { name, attack, speed, defense, hp, special_attack, special_defense } =
     pokemon;
 

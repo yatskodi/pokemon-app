@@ -18,6 +18,9 @@ app.get('/api', (req: Request, res: Response) => {
         .slice(0, 20)
     );
     return;
+  } else if (req.query.scroll) {
+    const scroll = req.query.scroll as string;
+    res.send(pokemon.slice(0, +scroll));
   } else {
     res.send(pokemon.slice(0, 20));
   }

@@ -1,14 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Pokemon } from '../../types';
+import { countUpdated } from '../thunks';
 
 interface PokemonState {
   search: string;
   pokemon: Pokemon[];
+  loading: boolean;
+  count: number;
 }
 
 const initialState: PokemonState = {
   search: '',
   pokemon: [],
+  loading: false,
+  count: 20,
 };
 
 const pokemonSlice = createSlice({
@@ -24,6 +29,11 @@ const pokemonSlice = createSlice({
     pokemonUpdated: (state, action: PayloadAction<Pokemon[]>) => {
       state.pokemon = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(countUpdated.fulfilled, (state, action) => {
+      state.count = +action.payload;
+    });
   },
 });
 

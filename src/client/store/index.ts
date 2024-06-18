@@ -16,13 +16,6 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
-export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
-export const useAppSelector = useSelector.withTypes<RootState>();
-
-export const useSearch = () => useAppSelector((state) => state.pokemon.search);
-export const usePokemon = () =>
-  useAppSelector((state) => state.pokemon.pokemon);
-
 listenerMiddleware.startListening.withTypes<RootState, AppDispatch>()({
   predicate: (_action, currentState, previousState) => {
     return currentState.pokemon.search !== previousState.pokemon.search;
@@ -34,3 +27,12 @@ listenerMiddleware.startListening.withTypes<RootState, AppDispatch>()({
     listenerApi.dispatch(pokemonUpdated(pokemon));
   },
 });
+
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
+export const useAppSelector = useSelector.withTypes<RootState>();
+
+export const useSearch = () => useAppSelector((state) => state.pokemon.search);
+export const usePokemon = () =>
+  useAppSelector((state) => state.pokemon.pokemon);
+export const useCount = () => useAppSelector((state) => state.pokemon.count);
+export { countUpdated } from './thunks';

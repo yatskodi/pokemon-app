@@ -3,11 +3,11 @@ import { Pokemon } from '../../types';
 import { getImageSrc } from '../../utility';
 import styled from 'styled-components';
 
-type PokemonCardProps = {
+type Props = {
   pokemon: Pokemon;
 };
 
-export const PokemonCard = ({ pokemon }: PokemonCardProps) => {
+export const PokemonCard = ({ pokemon }: Props) => {
   const { name, id } = pokemon;
   const linkTo = '/pokemon/$id';
 
