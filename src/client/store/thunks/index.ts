@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { pokemonScroll } from '../../api';
-import { pokemonUpdated } from '../reducers';
+import { pokemonUpdated } from '../';
 
 export const countUpdated = createAsyncThunk(
   'countUpdated',

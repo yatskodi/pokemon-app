@@ -1,7 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { MainContaner } from '../components';
-import { usePokemon, store } from '../store';
-import { pokemonUpdated } from '../store/reducers';
+import { usePokemon, store, pokemonUpdated } from '../store';
 import { getPokemons } from '../api';
 
 export const Route = createFileRoute('/')({

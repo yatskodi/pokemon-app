@@ -1,5 +1,4 @@
-import { useSearch, store } from '../../store';
-import { searchUpdated, searchReset } from '../../store/reducers';
+import { useSearch, store, searchUpdated, searchReset } from '../../store';
 import styled from 'styled-components';
 
 export const PokemonSearch = () => {
