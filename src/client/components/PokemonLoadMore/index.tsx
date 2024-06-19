@@ -1,10 +1,11 @@
 import { useRef, useEffect } from 'react';
-import { useCount, countUpdated, useAppDispatch } from '../../store';
+import { useCount, countUpdated, useAppDispatch, useSearch } from '../../store';
 import { useInViewPort } from '../../utility';
 import styled from 'styled-components';
 
 export const PokemonLoadMore = () => {
   const count = useCount();
+  const search = useSearch();
   const dispatch = useAppDispatch();
   const targetRef = useRef<HTMLDivElement | null>(null);
   const inViewport = useInViewPort(targetRef, { threshold: 0.5 });
@@ -15,7 +16,7 @@ export const PokemonLoadMore = () => {
   };
 
   useEffect(() => {
-    if (inViewport) {
+    if (inViewport && search === '') {
       loadMore();
     }
   }, [inViewport]);

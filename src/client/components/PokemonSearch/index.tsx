@@ -5,8 +5,9 @@ import styled from 'styled-components';
 export const PokemonSearch = () => {
   const search = useSearch();
   const { dispatch } = store;
-  const onChangeHadler = (e: React.ChangeEvent<HTMLInputElement>) =>
+  const onChangeHadler = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(searchUpdated(e.target.value));
+  };
   const onClickHandler = () => dispatch(searchReset());
 
   return (

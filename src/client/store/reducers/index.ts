@@ -27,6 +27,7 @@ const pokemonSlice = createSlice({
       state.search = '';
     },
     pokemonUpdated: (state, action: PayloadAction<Pokemon[]>) => {
+      state.count = action.payload?.length;
       state.pokemon = action.payload;
     },
   },
